@@ -32,6 +32,6 @@ rm -rf myvimrc
 
 cd /root
 tee -a .bashrc << EOF
-export MYVIMRC='~/vim_setup/.vimrc'
 export VIMINIT='source $MYVIMRC'
+export MYVIMRC='~/vim_setup/.vimrc'
 EOF
