@@ -56,9 +56,6 @@ nnoremap mm M
 
 " key mapping in NORMAL mode to remove highlighted words from search results
 nnoremap no :noh<return><esc>
-nnoremap <C-X> :TlistToggle<CR>
-nnoremap <M-Left> 0
-nnoremap <M-Right> $
 
 " key mapping in NORMAL mode to delete current line
 nnoremap - dd
@@ -76,8 +73,7 @@ set number relativenumber           " show current line number with relative num
 
 set cursorline
 
-au BufRead,BufNewFile *.stc set filetype=javascript
-
+" we want comments to be italicized
 highlight Comment cterm=italic gui=italic
 
 colo monokai
