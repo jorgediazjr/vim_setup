@@ -78,6 +78,8 @@ set cursorline
 
 au BufRead,BufNewFile *.stc set filetype=javascript
 
+highlight Comment cterm=italic gui=italic
+
 colo monokai
 
 " Show syntax highlighting groups for word under cursor
