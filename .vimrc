@@ -53,6 +53,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap mm M
+nnoremap <Left><Left> 0
+nnoremap <Right><Right> $
 
 " key mapping in NORMAL mode to remove highlighted words from search results
 nnoremap no :noh<return><esc>
@@ -68,6 +70,8 @@ inoremap ds $
 inoremap ht #
 inoremap jk <ESC>
 inoremap JK <ESC>
+inoremap <D-Left> <Esc>0wi
+inoremap <D-Right> <Esc>$i
 
 set number relativenumber           " show current line number with relative numbers above and below
 
