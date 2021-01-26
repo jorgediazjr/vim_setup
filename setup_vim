@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/
+cd /root
 
 if [ -d "/root/.vim" ]
 then
@@ -16,14 +16,14 @@ then
   echo "Directory /root/.vim/colors exists."
   cd /root/
   git clone https://github.com/sickill/vim-monokai.git
-  cp /root/vim-monokai/monokai.vim /root/.vim/colors
-  rm -rf vim-monokai
+  cp -v /root/vim-monokai/colors/monokai.vim /root/.vim/colors
+  rm -rvf vim-monokai
 else
   echo "Error: Directory /root/.vim does not exists."
   mkdir /root/.vim/colors
   cd /root/
   git clone https://github.com/sickill/vim-monokai.git
-  cp /root/vim-monokai/monokai.vim /root/.vim/colors
-  rm -rf vim-monokai
+  cp -v /root/vim-monokai/colors/monokai.vim /root/.vim/colors
+  rm -rvf vim-monokai
 fi
 
