@@ -1,0 +1,29 @@
+#!/bin/bash
+
+cd ~/
+
+if [ -d "/root/.vim" ]
+then
+  echo "Directory /root/.vim exists."
+else
+  echo "Error: Directory /root/.vim does not exists."
+  mkdir /root/.vim
+  cd /root/.vim
+fi
+
+if [ -d "/root/.vim/colors" ]
+then
+  echo "Directory /root/.vim/colors exists."
+  cd /root/
+  git clone https://github.com/sickill/vim-monokai.git
+  cp /root/vim-monokai/monokai.vim /root/.vim/colors
+  rm -rf vim-monokai
+else
+  echo "Error: Directory /root/.vim does not exists."
+  mkdir /root/.vim/colors
+  cd /root/
+  git clone https://github.com/sickill/vim-monokai.git
+  cp /root/vim-monokai/monokai.vim /root/.vim/colors
+  rm -rf vim-monokai
+fi
+
