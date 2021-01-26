@@ -71,6 +71,8 @@ inoremap ht #
 inoremap jk <ESC>
 inoremap JK <ESC>
 inoremap  <ESC>:w<CR>
+inoremap å <ESC>0wi
+inoremap ´ <ESC>$i
 
 set number relativenumber           " show current line number with relative numbers above and below
 
