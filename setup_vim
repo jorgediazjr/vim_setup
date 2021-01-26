@@ -29,14 +29,9 @@ fi
 
 cd /root
 rm -rf myvimrc
-mkdir myvimrc
-cd myvimrc
-git init
-git remote add origin https://github.com/jorgediazjr/vimrc.git
-git pull origin master
 
 cd /root
 tee -a .bashrc << EOF
 export VIMINIT='source $MYVIMRC'
-export MYVIMRC='~/myvimrc/.vimrc'
+export MYVIMRC='~/vim_setup/.vimrc'
 EOF
