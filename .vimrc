@@ -70,8 +70,6 @@ inoremap ds $
 inoremap ht #
 inoremap jk <ESC>
 inoremap JK <ESC>
-inoremap <A-Left> <Esc>0wi
-inoremap <A-Right> <Esc>$i
 
 set number relativenumber           " show current line number with relative numbers above and below
 
