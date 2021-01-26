@@ -27,3 +27,10 @@ else
   rm -rvf vim-monokai
 fi
 
+cd /root
+rm -rf myvimrc
+mkdir myvimrc
+cd myvimrc
+git init
+git remote add origin https://github.com/jorgediazjr/vimrc.git
+git pull origin master
