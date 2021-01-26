@@ -36,7 +36,7 @@ git remote add origin https://github.com/jorgediazjr/vimrc.git
 git pull origin master
 
 cd /root
-tee -a target.txt << EOF
+tee -a .bashrc << EOF
 export VIMINIT='source $MYVIMRC'
 export MYVIMRC='~/myvimrc/.vimrc'
 EOF
