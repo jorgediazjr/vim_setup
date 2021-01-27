@@ -55,6 +55,8 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap mm M
 nnoremap <Left><Left> 0
 nnoremap <Right><Right> $
+nnoremap <M-Left> 0
+nnoremap <M-Right> $
 
 " key mapping in NORMAL mode to remove highlighted words from search results
 nnoremap no :noh<return><esc>
