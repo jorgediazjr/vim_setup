@@ -57,6 +57,9 @@ nnoremap <Left><Left> 0
 nnoremap <Right><Right> $
 nnoremap <M-Left> 0
 nnoremap <M-Right> $
+nnoremap  <ESC>:w<CR>
+nnoremap ˙ 0
+nnoremap ¬ $
 
 " key mapping in NORMAL mode to remove highlighted words from search results
 nnoremap no :noh<return><esc>
@@ -79,10 +82,10 @@ set number relativenumber           " show current line number with relative num
 
 set cursorline
 
+colo monokai
+
 " we want comments to be italicized
 highlight Comment cterm=italic gui=italic
-
-colo monokai
 
 " Show syntax highlighting groups for word under cursor
 nmap <C-P> :call <SID>SynStack()<CR>
