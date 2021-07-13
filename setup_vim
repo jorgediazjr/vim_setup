@@ -14,18 +14,15 @@ fi
 if [ -d "/root/.vim/colors" ]
 then
   echo "Directory /root/.vim/colors exists."
-  cd /root/
-  git clone https://github.com/sickill/vim-monokai.git
-  cp -v /root/vim-monokai/colors/monokai.vim /root/.vim/colors
-  rm -rvf vim-monokai
 else
   echo "Error: Directory /root/.vim does not exists."
   mkdir /root/.vim/colors
-  cd /root/
-  git clone https://github.com/sickill/vim-monokai.git
-  cp -v /root/vim-monokai/colors/monokai.vim /root/.vim/colors
-  rm -rvf vim-monokai
 fi
+
+cd /root/
+git clone https://github.com/sickill/vim-monokai.git
+cp -v /root/vim-monokai/colors/monokai.vim /root/.vim/colors
+rm -rvf vim-monokai
 
 cd /root
 rm -rf myvimrc
