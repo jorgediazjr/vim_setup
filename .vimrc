@@ -72,11 +72,16 @@ nnoremap <tab>       :tabnext<CR>
 cnoreabbrev <expr> e ((getcmdtype() is# ':' && getcmdline() is# 'e')?('tabe'):('e'))
 
 inoremap ds $
-inoremap ht #
 inoremap jk <ESC>
 inoremap JK <ESC>
+
+" ctrl + shift + s
 inoremap  <ESC>:w<CR>
-inoremap å <ESC>0i
+
+" alt + z
+inoremap Ω <ESC>0i
+" alt + x
+inoremap ≈ <ESC>$a
 
 set number relativenumber           " show current line number with relative numbers above and below
 
