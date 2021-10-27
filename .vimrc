@@ -113,7 +113,6 @@ let ayucolor="mirage" " for mirage version of theme
 colorscheme ayu
 
 " settings for indentline plugin
-let g:indentLine_setColors = 0 " disabled so I can use my own preferred color for vertical bars
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 colorscheme monokai
