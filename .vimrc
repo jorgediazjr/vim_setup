@@ -116,6 +116,8 @@ colorscheme ayu
 let g:indentLine_setColors = 0 " disabled so I can use my own preferred color for vertical bars
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
+colorscheme monokai
+
 
 " Show syntax highlighting groups for word under cursor
 nmap <C-P> :call <SID>SynStack()<CR>
