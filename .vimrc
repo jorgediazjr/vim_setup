@@ -25,8 +25,8 @@ set autoindent                  " indent like previous line
 set smartindent
 
 set expandtab                   " don't use actual tab character
-set shiftwidth=2                " indenting is 2 spaces
-set softtabstop=2
+set shiftwidth=4                " indenting is 4 spaces
+set softtabstop=4
 
 set sidescroll=10
 
