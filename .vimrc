@@ -92,6 +92,31 @@ colo monokai
 " we want comments to be italicized
 highlight Comment cterm=italic gui=italic
 
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'ayu-theme/ayu-vim' " or other package manager
+Plug 'Yggdroot/indentLine'
+Plug 'sickill/vim-monokai'
+call plug#end()
+
+" settings for ayu colorscheme
+set termguicolors     " enable true colors support
+let ayucolor="dark"   " for dark version of theme
+let ayucolor="light"  " for light version of theme
+let ayucolor="mirage" " for mirage version of theme
+colorscheme ayu
+
+" settings for indentline plugin
+let g:indentLine_setColors = 0 " disabled so I can use my own preferred color for vertical bars
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+
 " Show syntax highlighting groups for word under cursor
 nmap <C-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
