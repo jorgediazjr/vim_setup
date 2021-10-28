@@ -114,13 +114,13 @@ call plug#end()
 let g:airline_theme='google_light'
 
 " git gutter settings
-"nmap ]h <Plug>(GitGutterNextHunk)
-"nmap [h <Plug>(GitGutterPrevHunk)
-"function! GitStatus()
-"  let [a,m,r] = GitGutterGetHunkSummary()
-"  return printf('+%d ~%d -%d', a, m, r)
-"endfunction
-"set statusline+=%{GitStatus()}
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
+set statusline+=%{GitStatus()}
 
 " settings for ayu colorscheme
 set termguicolors     " enable true colors support
