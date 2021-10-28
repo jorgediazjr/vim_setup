@@ -1,9 +1,11 @@
 set nocompatible                                " do not turn off VIM enhancements
-filetype plugin on                              " You can enable loading the plugin files for specific file types with
+filetype plugin indent on                              " You can enable loading the plugin files for specific file types with
 syntax on                                       " Vim to overrule your settings with the defaults
 set visualbell                                  " flash when there is a mistake
 set errorbells	                                " Beep or flash screen on errors
 set encoding=utf-8                              " character encoding
+
+set updatetime=100                              " for gitgutter
 
 set splitbelow                                  " how do you want your windows split
 
@@ -87,8 +89,6 @@ set number relativenumber           " show current line number with relative num
 
 set cursorline
 
-colo monokai
-
 " we want comments to be italicized
 highlight Comment cterm=italic gui=italic
 
@@ -103,7 +103,24 @@ call plug#begin('~/.vim/plugged')
 Plug 'ayu-theme/ayu-vim' " or other package manager
 Plug 'Yggdroot/indentLine'
 Plug 'sickill/vim-monokai'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ap/vim-css-color'
 call plug#end()
+" vim airline settings
+
+" vim airline theme settings
+let g:airline_theme='google_light'
+
+" git gutter settings
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
+set statusline+=%{GitStatus()}
 
 " settings for ayu colorscheme
 set termguicolors     " enable true colors support
