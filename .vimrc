@@ -147,6 +147,7 @@ colorscheme everforest
 
 " settings for indentline plugin
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_enabled = 0
 
 colorscheme monokai
 
