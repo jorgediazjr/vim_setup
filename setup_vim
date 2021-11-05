@@ -19,11 +19,6 @@ else
   mkdir /root/.vim/colors
 fi
 
-#cd /root/
-#git clone https://github.com/sickill/vim-monokai.git
-#cp -v /root/vim-monokai/colors/monokai.vim /root/.vim/colors
-#rm -rvf vim-monokai
-
 cd /root
 rm -rf myvimrc
 
@@ -33,4 +28,8 @@ export VIMINIT='source ~/vim_setup/.vimrc'
 export MYVIMRC='~/vim_setup/.vimrc'
 EOF
 
+# https://github.com/junegunn/vim-plug/issues/675
+# Since the installer on Vim 8 is asynchronous, you might want to pass --sync flag as follows
+# + is shorthand for -c
+# qa is for quit all
 vim +'PlugUpdate --sync' +qa
