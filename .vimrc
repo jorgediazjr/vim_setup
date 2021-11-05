@@ -142,12 +142,13 @@ set background=light
 " Available values: 'hard', 'medium'(default), 'soft'
 let g:everforest_background = 'soft'
 
-colorscheme monokai
 colorscheme ayu
 colorscheme everforest
 
 " settings for indentline plugin
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+colorscheme monokai
 
 " Show syntax highlighting groups for word under cursor
 nmap <C-P> :call <SID>SynStack()<CR>
