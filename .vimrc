@@ -1,13 +1,15 @@
+" <leader> is \
 set nocompatible                                " do not turn off VIM enhancements
 filetype plugin indent on                              " You can enable loading the plugin files for specific file types with
 syntax on                                       " Vim to overrule your settings with the defaults
 set visualbell                                  " flash when there is a mistake
-set errorbells	                                " Beep or flash screen on errors
+set errorbells                                  " Beep or flash screen on errors
 set encoding=utf-8                              " character encoding
 
 set updatetime=100                              " for gitgutter
 
 set splitbelow                                  " how do you want your windows split
+set splitright
 
 set showcmd                                     " show command
 set showmatch                                   " matching brackets
@@ -63,7 +65,9 @@ nnoremap <Right><Right> $
 nnoremap <M-Left> 0
 nnoremap <M-Right> $
 nnoremap  <ESC>:w<CR>
+" alt + h = ˙
 nnoremap ˙ 0
+" alt + l = ¬
 nnoremap ¬ $
 
 " key mapping in NORMAL mode to remove highlighted words from search results
@@ -71,8 +75,14 @@ nnoremap no :noh<return><esc>
 
 " key mapping in NORMAL mode to delete current line
 nnoremap - dd
+
+" key mapping in NORMAL mode to open a vertical split blank file
 nnoremap <leader>b <ESC>:vsp blank<CR>
+
+" key mapping to move to previous window with left-key-arrow + tab
 nnoremap <Left><tab> :tabprevious<CR>
+
+" key mapping to move to next window
 nnoremap <tab>       :tabnext<CR>
 cnoreabbrev <expr> e ((getcmdtype() is# ':' && getcmdline() is# 'e')?('tabe'):('e'))
 
@@ -142,14 +152,12 @@ set background=light
 " Available values: 'hard', 'medium'(default), 'soft'
 let g:everforest_background = 'soft'
 
+colorscheme monokai
 colorscheme ayu
 colorscheme everforest
 
 " settings for indentline plugin
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_enabled = 0
-
-colorscheme monokai
 
 " Show syntax highlighting groups for word under cursor
 nmap <C-P> :call <SID>SynStack()<CR>
