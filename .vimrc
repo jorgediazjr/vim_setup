@@ -152,9 +152,9 @@ set background=light
 " Available values: 'hard', 'medium'(default), 'soft'
 let g:everforest_background = 'soft'
 
-colorscheme monokai
 colorscheme ayu
 colorscheme everforest
+colorscheme monokai
 
 " settings for indentline plugin
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
