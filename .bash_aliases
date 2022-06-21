@@ -23,8 +23,10 @@ alias offer="cd /var/www/html/offer_include"
 alias dash="cd /var/www/html/dash-s44"
 alias dlogs="cd /var/log/dash_debug_files"
 
+alias lg="lazygit"
+
 alias g="git status ./"
-alias go="git push origin"
+alias gpo="git push origin"
 alias ga="git add"
 alias gd="git diff ./"
 alias gb="git branch -v"
