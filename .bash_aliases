@@ -40,7 +40,7 @@ alias gps="git checkout master;git pull origin staging"
 alias gpd="git checkout master;git pull origin dev"
 alias gbd="git branch -D"
 
-alias vimrc="vim ~/vim_setup/.vimrc"
+alias vimrc="vim ~/vim_setup/init.vim"
 alias bashrc="vim ~/.bashrc"
 alias bash_alias="vim ~/vim_setup/.bash_aliases"
 
