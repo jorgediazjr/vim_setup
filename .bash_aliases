@@ -19,9 +19,14 @@ alias legal="cd /var/www/html/legal"
 alias housing="cd /var/www/html/housing"
 alias section8="cd /var/www/html/section8"
 alias grants="cd /var/www/html/grants"
+alias stamps="cd /var/www/html/food-stamps"
 alias offer="cd /var/www/html/offer_include"
 alias dash="cd /var/www/html/dash-s44"
 alias dlogs="cd /var/log/dash_debug_files"
+alias syslog="vim /var/log/syslog"
+
+alias py="python3"
+alias python="python3"
 
 alias lg="lazygit"
 
@@ -55,6 +60,7 @@ cheat() {
 }
 
 # mycli aliases
+alias mycli-uid="mycli --login-path uid uid_data"
 alias mycli-sites="mycli --login-path dash sites"
 alias mycli-datamodel="mycli --login-path dash dataModel"
 alias mycli-shift44="mycli --login-path dash shift44"
@@ -73,3 +79,4 @@ alias mycli-legal="mycli --login-path legal sites"
 alias mycli-housing="mycli --login-path housing sites"
 alias mycli-section8="mycli --login-path section8 sites"
 alias mycli-grants="mycli --login-path grants sites"
+alias mycli-stamps="mycli --login-path stamps sites"
