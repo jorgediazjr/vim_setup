@@ -49,6 +49,8 @@ alias vimrc="vim ~/vim_setup/init.vim"
 alias bashrc="vim ~/.bashrc"
 alias bash_alias="vim ~/vim_setup/.bash_aliases"
 
+alias exercism-elm="cd ~/snap/exercism/5/exercism/elm"
+
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
