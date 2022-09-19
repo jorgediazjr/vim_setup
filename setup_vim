@@ -28,6 +28,11 @@ export VIMINIT='source ~/vim_setup/.vimrc'
 export MYVIMRC='~/vim_setup/.vimrc'
 EOF
 
+cd ~/
+wget https://github.com/tmiland/votd/raw/master/votd.sh
+chmod +x votd.sh
+ln -s ~/votd.sh /usr/bin/votd
+
 # https://github.com/junegunn/vim-plug/issues/675
 # Since the installer on Vim 8 is asynchronous, you might want to pass --sync flag as follows
 # + is shorthand for -c

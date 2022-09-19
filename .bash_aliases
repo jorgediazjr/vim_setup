@@ -61,6 +61,8 @@ cheat() {
   curl cht.sh/"$1"
 }
 
+alias 400s="cat /var/log/nginx/access.log | grep 'HTTP/1.1\" 400' | wc -l"
+
 # mycli aliases
 alias mycli-uid="mycli --login-path uid uid_data"
 alias mycli-sites="mycli --login-path dash sites"
