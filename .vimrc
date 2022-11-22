@@ -122,6 +122,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'rhysd/vim-syntax-christmas-tree'
+Plug 'avh4/elm-format'
+Plug 'ElmCast/elm-vim'
 call plug#end()
 " vim airline settings
 
@@ -158,6 +160,8 @@ colorscheme monokai
 
 " settings for indentline plugin
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+let g:elm_format_autosave = 1
 
 " Show syntax highlighting groups for word under cursor
 nmap <C-P> :call <SID>SynStack()<CR>
