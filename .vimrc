@@ -1,26 +1,27 @@
-" <leader> is \
-set nocompatible                                " do not turn off VIM enhancements
-filetype plugin indent on                              " You can enable loading the plugin files for specific file types with
-syntax on                                       " Vim to overrule your settings with the defaults
-set visualbell                                  " flash when there is a mistake
-set errorbells                                  " Beep or flash screen on errors
-set encoding=utf-8                              " character encoding
+let mapleader=","               " leader is comma
 
-set updatetime=100                              " for gitgutter
+set nocompatible                " do not turn off VIM enhancements
+filetype plugin indent on       " You can enable loading the plugin files for specific file types with
+syntax on                       " Vim to overrule your settings with the defaults
+set visualbell                  " flash when there is a mistake
+set errorbells                  " Beep or flash screen on errors
+set encoding=utf-8              " character encoding
 
-set splitbelow                                  " how do you want your windows split
+set updatetime=100              " for gitgutter
+
+set splitbelow                  " how do you want your windows split
 set splitright
 
-set showcmd                                     " show command
-set showmatch                                   " matching brackets
-set ttyfast                                     " speed scrolling in Vim
+set showcmd                     " show command
+set showmatch                   " matching brackets
+set ttyfast                     " speed scrolling in Vim
 
 set list
 set lcs=trail:-
 
-set scrolloff=11                                " keep the cursor at middle of screen
+set scrolloff=11                " keep the cursor at middle of screen
 
-set iskeyword=@,48-57,192-255                   " what is considered words in Vim
+set iskeyword=@,48-57,192-255   " what is considered words in Vim
 
 set foldmethod=indent           " how do you want the method for fold
 set nofoldenable                " files are normal when opened, not folded
@@ -98,13 +99,14 @@ inoremap Ω <ESC>0i
 " alt + x
 inoremap ≈ <ESC>$a
 
+inoremap <C-n> <C-x><C-o>
+
 set number relativenumber           " show current line number with relative numbers above and below
 
 set cursorline
 
 " we want comments to be italicized
 highlight Comment cterm=italic gui=italic
-
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -124,6 +126,11 @@ Plug 'sainnhe/vim-color-forest-night'
 Plug 'rhysd/vim-syntax-christmas-tree'
 Plug 'avh4/elm-format'
 Plug 'ElmCast/elm-vim'
+Plug 'capaldo/boogiewoogie'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+Plug 'folke/tokyonight.nvim'
+Plug 'liuchengxu/space-vim-theme'
+Plug 'savq/melange'
 call plug#end()
 " vim airline settings
 
@@ -145,18 +152,20 @@ let ayucolor="dark"   " for dark version of theme
 let ayucolor="mirage" " for mirage version of theme
 let ayucolor="light"  " for light version of theme
 
-" forest night colorscheme settings
-" For light version.
-set background=light
-
 " Set contrast.
 " This configuration option should be placed before `colorscheme everforest`.
 " Available values: 'hard', 'medium'(default), 'soft'
 let g:everforest_background = 'soft'
 
+colorscheme boogiewoogie
 colorscheme ayu
-colorscheme everforest
 colorscheme monokai
+colorscheme everforest
+set background=light
+
+colorscheme space_vim_theme
+
+colorscheme tokyonight
 
 " settings for indentline plugin
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -171,3 +180,12 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+function! Retab4Spaces()
+    set tabstop=4 shiftwidth=4 expandtab | retab
+endfunc
+
+if has('nvim')
+    let path = expand('<sfile>:p:h')
+    execute 'source ' path . '/init.vim'
+endif
