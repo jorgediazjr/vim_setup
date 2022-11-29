@@ -135,6 +135,10 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'liuchengxu/space-vim-theme'
 Plug 'elmcast/elm-vim'
 
+Plug 'radenling/vim-dispatch-neovim'
+Plug 'tpope/vim-dispatch'
+Plug 'clojure-vim/vim-jack-in'
+
 " Neovim-specific plugins
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
@@ -143,6 +147,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 Plug 'windwp/nvim-autopairs'
 Plug 'ggandor/lightspeed.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+
+Plug 'gpanders/nvim-parinfer'
+Plug 'clojure-vim/clojure.vim'
 
 Plug 'savq/melange'
 Plug 'adigitoleo/vim-mellow', { 'tag': '*' }
