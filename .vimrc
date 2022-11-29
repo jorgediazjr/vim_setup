@@ -126,7 +126,6 @@ Plug 'sainnhe/vim-color-forest-night'
 Plug 'rhysd/vim-syntax-christmas-tree'
 Plug 'avh4/elm-format'
 Plug 'ElmCast/elm-vim'
-Plug 'capaldo/boogiewoogie'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 Plug 'folke/tokyonight.nvim'
 Plug 'liuchengxu/space-vim-theme'
@@ -156,7 +155,6 @@ let ayucolor="light"  " for light version of theme
 " This configuration option should be placed before `colorscheme everforest`.
 " Available values: 'hard', 'medium'(default), 'soft'
 
-colorscheme boogiewoogie
 colorscheme ayu
 colorscheme monokai
 let g:everforest_background = 'soft'

@@ -127,7 +127,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'rhysd/vim-syntax-christmas-tree'
-Plug 'capaldo/boogiewoogie'
 Plug 'tpope/vim-repeat'
 Plug 'catppuccin/nvim'
 Plug 'folke/tokyonight.nvim'
@@ -143,11 +142,9 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
 Plug 'windwp/nvim-autopairs'
 Plug 'ggandor/lightspeed.nvim'
-Plug 'capaldo/boogiewoogie'
 Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'savq/melange'
-Plug 'haystackandroid/strawberry'
 Plug 'adigitoleo/vim-mellow', { 'tag': '*' }
 call plug#end()
 
@@ -185,7 +182,6 @@ let ayucolor="light"  " for light version of theme
 " Available values: 'hard', 'medium'(default), 'soft'
 let g:everforest_background = 'soft'
 
-colorscheme boogiewoogie
 colorscheme ayu
 colorscheme monokai
 colorscheme everforest
@@ -221,8 +217,6 @@ colorscheme tokyonight
 colorscheme tender
 
 set noshowmode
-
-colorscheme strawberry-light
 
 set background=dark
 colorscheme duskfox
