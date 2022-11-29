@@ -64,6 +64,7 @@ cheat() {
 alias 400s="cat /var/log/nginx/access.log | grep 'HTTP/1.1\" 400' | wc -l"
 
 alias elm-exer="cd snap/exercism/5/exercism/elm/"
+alias elm-cloj="cd snap/exercism/5/exercism/clojure/"
 
 # mycli aliases
 alias mycli-uid="mycli --login-path uid uid_data"
