@@ -85,6 +85,10 @@ nnoremap <Left><tab> :tabprevious<CR>
 
 " key mapping to move to next window
 nnoremap <tab>       :tabnext<CR>
+
+nnoremap <leader>cs :Telescope colorscheme<CR>
+nnoremap <leader>mp :Telescope man_pages<CR>
+
 cnoreabbrev <expr> e ((getcmdtype() is# ':' && getcmdline() is# 'e')?('tabe'):('e'))
 
 inoremap ds $
@@ -99,14 +103,13 @@ inoremap Ω <ESC>0i
 " alt + x
 inoremap ≈ <ESC>$a
 
-inoremap <C-n> <C-x><C-o>
-
 set number relativenumber           " show current line number with relative numbers above and below
 
 set cursorline
 
 " we want comments to be italicized
 highlight Comment cterm=italic gui=italic
+
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -124,18 +127,43 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'rhysd/vim-syntax-christmas-tree'
-Plug 'avh4/elm-format'
-Plug 'ElmCast/elm-vim'
 Plug 'capaldo/boogiewoogie'
-Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+Plug 'tpope/vim-repeat'
+Plug 'catppuccin/nvim'
 Plug 'folke/tokyonight.nvim'
+Plug 'jacoborus/tender.vim'
+Plug 'EdenEast/nightfox.nvim'
 Plug 'liuchengxu/space-vim-theme'
+Plug 'elmcast/elm-vim'
+
+" Neovim-specific plugins
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
+Plug 'windwp/nvim-autopairs'
+Plug 'ggandor/lightspeed.nvim'
+Plug 'capaldo/boogiewoogie'
+Plug 'lewis6991/gitsigns.nvim'
+
 Plug 'savq/melange'
+Plug 'haystackandroid/strawberry'
+Plug 'adigitoleo/vim-mellow', { 'tag': '*' }
 call plug#end()
+
+" Source lua configs
+let g:conf_root = expand('<sfile>:p:h')
+let g:nvim_lua_config_root = g:conf_root . '/lua'
+let g:config_luafile_list = ['telescope-conf', 'lspconf', 'autopairs', 'gitsigns']
+for f in g:config_luafile_list
+    execute 'luafile ' . g:nvim_lua_config_root . '/' . f . '.lua'
+endfor
+
+
 " vim airline settings
 
 " vim airline theme settings
-let g:airline_theme='google_light'
+"let g:airline_theme='google_light'
 
 " git gutter settings
 nmap ]h <Plug>(GitGutterNextHunk)
@@ -155,22 +183,61 @@ let ayucolor="light"  " for light version of theme
 " Set contrast.
 " This configuration option should be placed before `colorscheme everforest`.
 " Available values: 'hard', 'medium'(default), 'soft'
+let g:everforest_background = 'soft'
 
 colorscheme boogiewoogie
 colorscheme ayu
 colorscheme monokai
-let g:everforest_background = 'soft'
 colorscheme everforest
-set background=light
+set background=dark
+
+" Example config in VimScript
+let g:tokyonight_style = "night"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+
+" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:tokyonight_colors = {
+  \ 'hint': 'orange',
+  \ 'error': '#ff0000'
+\ }
+
+" set airline theme
+let g:airline_theme = 'zenburn'
+
+" Theme
+syntax enable
+
+set background=dark
+
+
+" Load the colorscheme
+colorscheme ayu
 
 colorscheme space_vim_theme
 
 colorscheme tokyonight
 
+colorscheme tender
+
+set noshowmode
+
+colorscheme strawberry-light
+
+set background=dark
+colorscheme duskfox
+
+set background=light
+colorscheme mellow
+colorscheme melange
+
+
+let g:everforest_background = 'soft'
+colorscheme everforest
+
+
 " settings for indentline plugin
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-let g:elm_format_autosave = 1
 
 " Show syntax highlighting groups for word under cursor
 nmap <C-P> :call <SID>SynStack()<CR>
@@ -180,12 +247,3 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
-
-function! Retab4Spaces()
-    set tabstop=4 shiftwidth=4 expandtab | retab
-endfunc
-
-if has('nvim')
-    let path = expand('<sfile>:p:h')
-    execute 'source ' path . '/init.vim'
-endif
