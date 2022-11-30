@@ -1,4 +1,5 @@
-let mapleader=","               " leader is comma
+let mapleader=" "               " leader is comma
+let localleader=","
 
 set nocompatible                " do not turn off VIM enhancements
 filetype plugin indent on       " You can enable loading the plugin files for specific file types with

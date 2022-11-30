@@ -1,4 +1,5 @@
-let mapleader=","               " leader is comma
+let mapleader=" "               " leader is comma
+let localleader=","
 
 set nocompatible                " do not turn off VIM enhancements
 filetype plugin indent on       " You can enable loading the plugin files for specific file types with
@@ -150,6 +151,11 @@ Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'gpanders/nvim-parinfer'
 Plug 'clojure-vim/clojure.vim'
+Plug 'Olical/conjure'
+
+Plug 'radenling/vim-dispatch-neovim'
+Plug 'tpope/vim-dispatch'
+Plug 'clojure-vim/vim-jack-in'
 
 Plug 'savq/melange'
 Plug 'adigitoleo/vim-mellow', { 'tag': '*' }
