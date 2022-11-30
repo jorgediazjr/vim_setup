@@ -49,8 +49,6 @@ alias vimrc="vim ~/vim_setup/init.vim"
 alias bashrc="vim ~/.bashrc"
 alias bash_alias="vim ~/vim_setup/.bash_aliases"
 
-alias exercism-elm="cd ~/snap/exercism/5/exercism/elm"
-
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
@@ -63,8 +61,8 @@ cheat() {
 
 alias 400s="cat /var/log/nginx/access.log | grep 'HTTP/1.1\" 400' | wc -l"
 
-alias elm-exer="cd snap/exercism/5/exercism/elm/"
-alias cloj-exer="cd snap/exercism/5/exercism/clojure/"
+alias elm-exer="cd ~/snap/exercism/5/exercism/elm/"
+alias cloj-exer="cd ~/snap/exercism/5/exercism/clojure/"
 
 # mycli aliases
 alias mycli-uid="mycli --login-path uid uid_data"
