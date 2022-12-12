@@ -81,36 +81,9 @@ nnoremap - dd
 " key mapping in NORMAL mode to open a vertical split blank file
 nnoremap <leader>b <ESC>:vsp blank<CR>
 
-" key mapping to move to previous window with left-key-arrow + tab
-nnoremap <Left><tab> :tabprevious<CR>
-
-" key mapping to move to next window
-nnoremap <tab>       :tabnext<CR>
 
 nnoremap <leader>cs :Telescope colorscheme<CR>
 nnoremap <leader>mp :Telescope man_pages<CR>
-
-cnoreabbrev <expr> e ((getcmdtype() is# ':' && getcmdline() is# 'e')?('tabe'):('e'))
-
-inoremap ds $
-inoremap jk <ESC>
-inoremap JK <ESC>
-
-" ctrl + shift + s
-inoremap  <ESC>:w<CR>
-
-" alt + z
-inoremap Ω <ESC>0i
-" alt + x
-inoremap ≈ <ESC>$a
-
-set number relativenumber           " show current line number with relative numbers above and below
-
-set cursorline
-
-" we want comments to be italicized
-highlight Comment cterm=italic gui=italic
-
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -128,8 +101,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ap/vim-css-color'
 Plug 'sainnhe/vim-color-forest-night'
 Plug 'rhysd/vim-syntax-christmas-tree'
-Plug 'tpope/vim-repeat'
-Plug 'catppuccin/nvim'
 Plug 'folke/tokyonight.nvim'
 Plug 'jacoborus/tender.vim'
 Plug 'EdenEast/nightfox.nvim'
@@ -157,7 +128,6 @@ Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-dispatch'
 Plug 'clojure-vim/vim-jack-in'
 
-Plug 'savq/melange'
 Plug 'adigitoleo/vim-mellow', { 'tag': '*' }
 call plug#end()
 
@@ -168,89 +138,17 @@ let g:config_luafile_list = ['telescope-conf', 'lspconf', 'autopairs', 'gitsigns
 for f in g:config_luafile_list
     execute 'luafile ' . g:nvim_lua_config_root . '/' . f . '.lua'
 endfor
-
-
 " vim airline settings
-
-" vim airline theme settings
-"let g:airline_theme='google_light'
-
-" git gutter settings
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-function! GitStatus()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return printf('+%d ~%d -%d', a, m, r)
-endfunction
-set statusline+=%{GitStatus()}
-
-" settings for ayu colorscheme
-set termguicolors     " enable true colors support
-let ayucolor="dark"   " for dark version of theme
-let ayucolor="mirage" " for mirage version of theme
-let ayucolor="light"  " for light version of theme
-
-" Set contrast.
-" This configuration option should be placed before `colorscheme everforest`.
-" Available values: 'hard', 'medium'(default), 'soft'
-let g:everforest_background = 'soft'
-
-colorscheme ayu
-colorscheme monokai
 colorscheme everforest
-set background=dark
-
-" Example config in VimScript
-let g:tokyonight_style = "night"
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-
-" Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:tokyonight_colors = {
-  \ 'hint': 'orange',
-  \ 'error': '#ff0000'
-\ }
-
 " set airline theme
 let g:airline_theme = 'zenburn'
 
 " Theme
 syntax enable
-
 set background=dark
-
-
-" Load the colorscheme
-colorscheme ayu
-
-colorscheme space_vim_theme
-
-colorscheme tokyonight
-
-colorscheme tender
-
 set noshowmode
-
-set background=dark
-colorscheme duskfox
-
 set background=light
-colorscheme mellow
-colorscheme melange
-
-
 let g:everforest_background = 'soft'
 colorscheme everforest
-
-
 " settings for indentline plugin
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-" Show syntax highlighting groups for word under cursor
-nmap <C-P> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
