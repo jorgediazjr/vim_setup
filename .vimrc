@@ -160,7 +160,7 @@ colorscheme ayu
 colorscheme monokai
 let g:everforest_background = 'soft'
 colorscheme everforest
-set background=light
+set background=dark
 
 colorscheme space_vim_theme
 

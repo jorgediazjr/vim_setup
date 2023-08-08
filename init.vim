@@ -145,9 +145,9 @@ let g:airline_theme = 'zenburn'
 
 " Theme
 syntax enable
+set background=light
 set background=dark
 set noshowmode
-set background=light
 let g:everforest_background = 'soft'
 colorscheme everforest
 " settings for indentline plugin
