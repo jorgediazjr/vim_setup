@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 # personal aliases
 alias h="history"
 alias home="cd /var/www/html/"
@@ -23,9 +25,11 @@ alias grants="cd /var/www/html/grants"
 alias stamps="cd /var/www/html/food-stamps"
 alias stimulus="cd /var/www/html/stimulus"
 alias spaoa="cd /var/www/html/spaoa"
+alias credits="cd /var/www/html/creditcard"
+alias ufn="cd /var/www/html/ufn"
 alias offer="cd /var/www/html/offer_include"
 alias adserving="cd /var/www/html/ad-serving-utils"
-alias dash="cd /var/www/html/dash-s44"
+alias dash="cd /var/www/html/s44-dashboard/"
 alias dlogs="cd /var/log/dash_debug_files"
 alias syslog="vim /var/log/syslog"
 
@@ -57,7 +61,7 @@ alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 
-alias err="tail --l 50 /var/log/nginx/error.log"
+alias err="tail --l 100 /var/log/nginx/error.log"
 alias cerr="cp /dev/null /var/log/nginx/error.log"
 cheat() {
     curl cht.sh/"$1"
@@ -69,6 +73,7 @@ alias elm-exer="cd ~/snap/exercism/5/exercism/elm/"
 alias cloj-exer="cd ~/snap/exercism/5/exercism/clojure/"
 
 # mycli aliases
+alias mycli-local="mycli --login-path local"
 alias mycli-uid="mycli --login-path uid uid_data"
 alias mycli-sites="mycli --login-path dash sites"
 alias mycli-datamodel="mycli --login-path dash dataModel"
@@ -92,8 +97,8 @@ alias mycli-stimulus="mycli --login-path stimulus sites"
 alias mycli-spaoa="mycli --login-path spaoa sites"
 alias mycli-pubrecoup="mycli --login-path pubrecoup dataModel"
 alias mycli-jobmanager="mycli --login-path jobmanager curl"
-alias mycli-users="mycli --login-path aurora userdata"
-alias mycli-ro-users="mycli --login-path aurora-ro userdata"
+alias mycli-old-users="mycli --login-path aurora userdata"
+alias mycli-old-ro-users="mycli --login-path aurora-ro userdata"
 alias mycli-users="mycli --login-path userdb-read userdata"
 alias mycli-userswrite="mycli --login-path userdb-write userdata"
 alias mycli-aws-reporting="mycli --login-path aws-reporting reporting"
