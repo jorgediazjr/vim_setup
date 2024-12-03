@@ -92,6 +92,8 @@ require('packer').startup(function(use)
   -- Plugin manager
   use 'wbthomason/packer.nvim'
 
+  use 'goolord/alpha-nvim'
+
   use 'windwp/nvim-autopairs'
 
   -- Colorschemes
@@ -132,7 +134,7 @@ require('packer').startup(function(use)
 end)
 EOF
 
-colorscheme kanagawa
+colorscheme biscuit
 
 lua << EOF
 require('gitsigns').setup()
@@ -204,5 +206,43 @@ lua << EOF
 require('nvim-autopairs').setup({
   disable_filetype = { "TelescopePrompt", "vim" }, -- Optional: Disable in specific file types
 })
+EOF
+
+lua << EOF
+  local alpha = require('alpha')
+  local dashboard = require('alpha.themes.dashboard')
+
+  -- Set header (ASCII art or custom text)
+  dashboard.section.header.val = {
+"███████╗██╗  ██╗██╗███████╗████████╗██╗  ██╗██╗  ██╗",
+"██╔════╝██║  ██║██║██╔════╝╚══██╔══╝██║  ██║██║  ██║",
+"███████╗███████║██║█████╗     ██║   ███████║███████║",
+"╚════██║██╔══██║██║██╔══╝     ██║   ╚════██║╚════██║",
+"███████║██║  ██║██║██║        ██║        ██║     ██║",
+"╚══════╝╚═╝  ╚═╝╚═╝╚═╝        ╚═╝        ╚═╝     ╚═╝"
+  }
+
+  -- Set buttons for common actions
+  dashboard.section.buttons.val = {
+    dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
+    dashboard.button("n", "  New file", ":ene<CR>"),
+    dashboard.button("r", "  Recent files", ":Telescope oldfiles<CR>"),
+    dashboard.button("p", "  Packer Plugin Manager", ":PackerSync<CR>"),
+    dashboard.button("m", "  Mason", ":Mason<CR>"),
+    dashboard.button("q", "  Quit", ":qa<CR>"),
+  }
+
+  -- Center the dashboard contents
+  dashboard.config.layout = {
+    { type = "padding", val = 10 }, -- Adds padding before the header
+    dashboard.section.header,
+    { type = "padding", val = 2 },
+    dashboard.section.buttons,
+    { type = "padding", val = 1 },
+    dashboard.section.footer,
+  }
+
+  -- Apply the configuration
+  alpha.setup(dashboard.config)
 EOF
 
