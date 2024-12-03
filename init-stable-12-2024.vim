@@ -77,6 +77,9 @@ nnoremap e e
 " Key mapping to open LazyGit
 nnoremap <leader>lg :LazyGit<CR>
 
+" Key mapping for Telescope colorscheme picker
+nnoremap <leader>cs :Telescope colorscheme<CR>
+
 inoremap ds $
 inoremap jk <ESC>
 inoremap JK <ESC>
@@ -91,8 +94,8 @@ inoremap ≈ <ESC>$a
 
 inoremap <C-n> <C-x><C-o>
 
-
 " Enable Lua support for plugin management
+
 lua << EOF
 require('packer').startup(function(use)
   -- Plugin manager
@@ -135,8 +138,11 @@ require('packer').startup(function(use)
   -- Statusline
   use 'nvim-lualine/lualine.nvim'
 
-  -- Fuzzy finder
-  use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { 'nvim-lua/plenary.nvim' } }
+  -- Telescope and its dependencies
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
 end)
 EOF
 
