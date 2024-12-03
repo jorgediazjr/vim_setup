@@ -1,3 +1,6 @@
+let mapleader=" "               " leader is comma
+let localleader=","
+
 set termguicolors
 set number              " Show line numbers
 syntax on               " Enable syntax highlighting
@@ -70,6 +73,9 @@ nnoremap e<space> :tabe
 
 " Ensure 'e' behaves normally to move to the end of a word
 nnoremap e e
+
+" Key mapping to open LazyGit
+nnoremap <leader>lg :LazyGit<CR>
 
 inoremap ds $
 inoremap jk <ESC>
@@ -244,5 +250,15 @@ lua << EOF
 
   -- Apply the configuration
   alpha.setup(dashboard.config)
+EOF
+
+lua << EOF
+require('packer').startup(function()
+  -- LazyGit plugin
+  use {
+    'kdheepak/lazygit.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }, -- Required dependency
+  }
+end)
 EOF
 
