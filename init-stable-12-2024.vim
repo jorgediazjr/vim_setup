@@ -105,6 +105,24 @@ require('packer').startup(function(use)
 
   use 'windwp/nvim-autopairs'
 
+  use 'kyazdani42/nvim-web-devicons'
+
+  use 'echasnovski/mini.nvim'
+
+  use 'folke/todo-comments.nvim'
+
+  use 'tpope/vim-fugitive'
+
+  use 'junegunn/fzf.vim'
+
+  use 'justinmk/vim-sneak'
+
+  use 'preservim/nerdtree'
+
+  use 'sheerun/vim-polyglot'
+
+  use 'mattn/emmet-vim'
+
   -- Colorschemes
   use 'gruvbox-community/gruvbox'       -- Gruvbox
   use 'dracula/vim'                     -- Dracula
@@ -130,7 +148,10 @@ require('packer').startup(function(use)
   use 'vimwiki/vimwiki'
 
   -- Treesitter for syntax highlighting
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
 
   -- File explorer
   use 'kyazdani42/nvim-tree.lua'
@@ -143,10 +164,23 @@ require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' }
   }
+
+  -- LazyGit plugin
+  use {
+    'kdheepak/lazygit.nvim',
+    requires = { 'nvim-lua/plenary.nvim' }, -- Required dependency
+  }
+
+  use {
+    'prettier/vim-prettier',
+    run = 'npm install'
+  }
 end)
 EOF
 
 colorscheme biscuit
+
+let g:user_emmet_leader_key = '<C-e>'  " Set a custom key for Emmet triggers
 
 lua << EOF
 require('gitsigns').setup()
@@ -158,6 +192,28 @@ require("mason-lspconfig").setup({
     ensure_installed = { "intelephense", "html" },
 })
 EOF
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  -- Languages to be installed
+  ensure_installed = { "php", "html", "css", "javascript" },
+
+  -- Automatically install missing parsers when entering a buffer
+  auto_install = true,
+
+  -- Highlighting configuration
+  highlight = {
+    enable = true, -- Enable Treesitter-based highlighting
+    additional_vim_regex_highlighting = false, -- Disable built-in regex highlighting for better performance
+  },
+
+  -- Enable indentation based on Treesitter
+  indent = {
+    enable = true,
+  },
+}
+EOF
+
 
 lua << EOF
 local lspconfig = require('lspconfig')
@@ -239,6 +295,7 @@ lua << EOF
     dashboard.button("f", "  Find file", ":Telescope find_files<CR>"),
     dashboard.button("n", "  New file", ":ene<CR>"),
     dashboard.button("r", "  Recent files", ":Telescope oldfiles<CR>"),
+    dashboard.button("k", "  Check keymaps", ":Telescope keymaps<CR>"),
     dashboard.button("p", "  Packer Plugin Manager", ":PackerSync<CR>"),
     dashboard.button("m", "  Mason", ":Mason<CR>"),
     dashboard.button("q", "  Quit", ":qa<CR>"),
@@ -256,15 +313,5 @@ lua << EOF
 
   -- Apply the configuration
   alpha.setup(dashboard.config)
-EOF
-
-lua << EOF
-require('packer').startup(function()
-  -- LazyGit plugin
-  use {
-    'kdheepak/lazygit.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }, -- Required dependency
-  }
-end)
 EOF
 
