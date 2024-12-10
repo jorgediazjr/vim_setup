@@ -123,12 +123,24 @@ require('packer').startup(function(use)
 
   use 'mattn/emmet-vim'
 
+  use 'marcussimonsen/let-it-snow.nvim'
+
   -- Colorschemes
   use 'gruvbox-community/gruvbox'       -- Gruvbox
   use 'dracula/vim'                     -- Dracula
   use 'folke/tokyonight.nvim'           -- Tokyo Night
   use 'rebelot/kanagawa.nvim'
+  use 'rose-pine/neovim'
+  use 'atmosuwiryo/vim-winteriscoming'
+  use 'arcticicestudio/nord-vim'        -- Cool and frosty
   use 'Biscuit-Theme/nvim'              -- Biscuit theme https://github.com/Biscuit-Theme/nvim
+  use({
+    "neanias/everforest-nvim",
+    -- Optional; default configuration will be used if setup isn't called.
+    config = function()
+      require("everforest").setup()
+    end,
+  })
 
   -- Git integration
   use 'lewis6991/gitsigns.nvim'
@@ -177,8 +189,6 @@ require('packer').startup(function(use)
   }
 end)
 EOF
-
-colorscheme biscuit
 
 let g:user_emmet_leader_key = '<C-e>'  " Set a custom key for Emmet triggers
 
