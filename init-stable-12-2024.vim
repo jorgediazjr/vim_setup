@@ -59,9 +59,6 @@ nnoremap no :noh<return><esc>
 " key mapping in NORMAL mode to delete current line
 nnoremap - dd
 
-" key mapping in NORMAL mode to open a vertical split blank file
-nnoremap <leader>b <ESC>:vsp blank<CR>
-
 " key mapping to move to previous window with left-key-arrow + tab
 nnoremap <Left><tab> :tabprevious<CR>
 
@@ -74,11 +71,31 @@ nnoremap e<space> :tabe
 " Ensure 'e' behaves normally to move to the end of a word
 nnoremap e e
 
+" key mapping in NORMAL mode to open a vertical split blank file
+nnoremap <leader>b <ESC>:vsp blank<CR>
+
 " Key mapping to open LazyGit
 nnoremap <leader>lg :LazyGit<CR>
 
 " Key mapping for Telescope colorscheme picker
 nnoremap <leader>cs :Telescope colorscheme<CR>
+
+" Map <leader>e to toggle NvimTree
+nnoremap <leader>e :NvimTreeToggle<CR>
+
+nnoremap <leader>so :SymbolsOutline<CR>
+
+nnoremap <leader>fs :Telescope lsp_document_symbols<CR>
+
+" Key mapping for viewing code actions
+nnoremap <silent> <leader>ca :lua vim.lsp.buf.code_action()<CR>
+
+" Key mapping for navigating diagnostics
+nnoremap <silent> <leader>dn :lua vim.diagnostic.goto_next()<CR>
+nnoremap <silent> <leader>dp :lua vim.diagnostic.goto_prev()<CR>
+
+" Key mapping for showing diagnostic details in a floating window
+nnoremap <silent> <leader>ds :lua vim.diagnostic.open_float()<CR>
 
 inoremap ds $
 inoremap jk <ESC>
@@ -109,8 +126,6 @@ require('packer').startup(function(use)
 
   use 'echasnovski/mini.nvim'
 
-  use 'folke/todo-comments.nvim'
-
   use 'tpope/vim-fugitive'
 
   use 'junegunn/fzf.vim'
@@ -123,6 +138,8 @@ require('packer').startup(function(use)
 
   use 'mattn/emmet-vim'
 
+  use 'simrat39/symbols-outline.nvim'
+
   use 'marcussimonsen/let-it-snow.nvim'
 
   -- Colorschemes
@@ -134,6 +151,8 @@ require('packer').startup(function(use)
   use 'atmosuwiryo/vim-winteriscoming'
   use 'arcticicestudio/nord-vim'        -- Cool and frosty
   use 'Biscuit-Theme/nvim'              -- Biscuit theme https://github.com/Biscuit-Theme/nvim
+  use 'sainnhe/sonokai'                 -- Sonokai colorscheme
+  use 'savq/melange-nvim'
   use({
     "neanias/everforest-nvim",
     -- Optional; default configuration will be used if setup isn't called.
@@ -187,6 +206,14 @@ require('packer').startup(function(use)
     'prettier/vim-prettier',
     run = 'npm install'
   }
+
+  use {
+    "folke/todo-comments.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("todo-comments").setup {}
+    end
+  }
 end)
 EOF
 
@@ -194,6 +221,10 @@ let g:user_emmet_leader_key = '<C-e>'  " Set a custom key for Emmet triggers
 
 lua << EOF
 require('gitsigns').setup()
+EOF
+
+lua << EOF
+require('symbols-outline').setup()
 EOF
 
 lua << EOF
@@ -221,6 +252,10 @@ require'nvim-treesitter.configs'.setup {
   indent = {
     enable = true,
   },
+
+  playground = {
+    enable = true,
+  },
 }
 EOF
 
@@ -245,7 +280,7 @@ lua << EOF
 require('lualine').setup {
   options = {
     icons_enabled = true,            -- Use icons in the statusline
-    theme = 'powerline',               -- Change to match your colorscheme (e.g., 'tokyonight')
+    theme = 'auto', -- Match the colorscheme
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = { 'NvimTree' }, -- Exclude specific file types
@@ -253,7 +288,7 @@ require('lualine').setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = { 'filename' },
+    lualine_c = { { 'filename', icon = '🎄' } }, -- Add a Christmas tree icon
     lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
@@ -285,6 +320,59 @@ require('nvim-autopairs').setup({
   disable_filetype = { "TelescopePrompt", "vim" }, -- Optional: Disable in specific file types
 })
 EOF
+
+lua << EOF
+require('nvim-tree').setup({
+    sort_by = "case_sensitive",  -- Sort files case sensitively
+    view = {
+        adaptive_size = true,   -- Resize tree based on content
+        side = "left",          -- Tree appears on the left side
+        width = 30,             -- Tree width (in columns)
+    },
+    renderer = {
+        highlight_opened_files = "name", -- Highlight opened files
+        highlight_git = true,            -- Highlight Git changes
+        icons = {
+            glyphs = {
+                default = "",
+                symlink = "",
+                folder = {
+                    arrow_open = "",
+                    arrow_closed = "",
+                    default = "",
+                    open = "",
+                },
+                git = {
+                    unstaged = "✗",
+                    staged = "✓",
+                    unmerged = "",
+                    renamed = "➜",
+                    untracked = "★",
+                },
+            },
+        },
+    },
+    actions = {
+        open_file = {
+            quit_on_open = true, -- Close tree when opening a file
+        },
+    },
+    diagnostics = {
+        enable = true,          -- Show diagnostics (e.g., errors)
+        icons = {
+            hint = "",
+            info = "",
+            warning = "",
+            error = "",
+        },
+    },
+    git = {
+        enable = true,          -- Show git status
+        ignore = false,         -- Show ignored files
+    },
+})
+EOF
+
 
 lua << EOF
   local alpha = require('alpha')
@@ -324,4 +412,39 @@ lua << EOF
   -- Apply the configuration
   alpha.setup(dashboard.config)
 EOF
+
+" Enable a cozy colorscheme
+colorscheme quiet
+
+" Set Sonokai colorscheme
+let g:sonokai_style = 'espresso'     " Options: default, andromeda, shusia, maia, atlantis, espresso
+let g:sonokai_enable_italic = 1       " Enable italic text
+let g:sonokai_disable_italic_comment = 0 " Enable italic for comments
+let g:sonokai_cursor = 'auto'         " Cursor highlighting mode
+let g:sonokai_better_performance = 1  " Improve performance
+colorscheme sonokai
+
+
+
+"highlight Normal guibg=#002b36 guifg=#839496
+"highlight String guifg=#98be65
+
+"highlight Normal guibg=#002b36 guifg=#eee8d5
+"highlight Comment guifg=#586e75 gui=italic
+"highlight Keyword guifg=#FF0000 gui=bold  " Red for keywords
+"highlight String guifg=#00FF00 gui=bold  " Green for strings
+"highlight Function guifg=#FFD700 gui=bold  " Gold for functions
+"highlight CursorLine guibg=#1c1f24
+"highlight LineNr guifg=#839496 guibg=#002b36
+"highlight Search guibg=#FF4500 guifg=#000000 gui=bold
+"highlight Visual guibg=#073642
+
+" Festive highlights
+"highlight Normal guibg=#1c1f24 guifg=#f0f0f0
+"highlight Comment guifg=#778899 gui=italic
+"highlight Keyword guifg=#FF6347 gui=bold " Tomato red
+"highlight String guifg=#32CD32 gui=bold " Lime green
+"highlight Function guifg=#FFD700 gui=bold " Gold
+"highlight CursorLine guibg=#002b36
+"highlight Identifier guifg=#FFD700
 
