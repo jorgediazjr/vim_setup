@@ -3,9 +3,6 @@
 # personal aliases
 alias h="history"
 alias home="cd /var/www/html/"
-alias vim="nvim"
-alias v="nvim"
-alias vd="nvim -d"
 alias ogvim="/usr/bin/vim"
 alias ogvimdiff="/usr/bin/vimdiff"
 alias x="exit"
@@ -70,15 +67,13 @@ alias ....="cd ../../../"
 alias err="tail --l 100 /var/log/nginx/error.log"
 alias cerr="cp /dev/null /var/log/nginx/error.log"
 cheat() {
-    curl cht.sh/"$1"
+  curl cht.sh/"$1"
 }
 
 alias 400s="cat /var/log/nginx/access.log | grep 'HTTP/1.1\" 400' | wc -l"
 
 alias elm-exer="cd ~/snap/exercism/5/exercism/elm/"
 alias cloj-exer="cd ~/snap/exercism/5/exercism/clojure/"
-
-alias nvim_config="v ~/.config/nvim/init.vim"
 
 # mycli aliases
 alias mycli-local="mycli --login-path local"
@@ -119,3 +114,10 @@ alias mycli-aws-reporting="mycli --login-path aws-reporting reporting"
 alias mycli-ronalyn="mycli --login-path ronalyn sites"
 alias mycli-transaction="mycli --login-path transaction users"
 alias mycli-synapse="mycli --login-path synapse sites"
+
+alias nvim_config="v ~/.config/nvim/init.vim"
+alias avim="NVIM_APPNAME=astronvim nvim"
+alias lvim="NVIM_APPNAME=lazyvim nvim"
+alias v="nvim"
+alias vim="nvim"
+alias vd="nvim -d"
